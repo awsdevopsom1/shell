@@ -59,7 +59,7 @@ dnf install mysql -y &>>$log_file
 status_check
 
 echo -e "${color} Load Schema \e[0m"
-mysql -h 172.31.86.200 -uroot -pExpenseApp@1 < /app/schema/backend.sql  &>>$log_file
+mysql -h 172.31.86.200 -uroot -p${MYSQL_ROOT_PASSWORD} < /app/schema/backend.sql  &>>$log_file
 status_check
 
 echo -e "${colour} starting the backendservice \e[0m"
