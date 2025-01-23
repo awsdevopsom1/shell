@@ -8,12 +8,12 @@ fi
 MYSQL_ROOT_PASSWORD=$1
 
 
-colour = "\e[33m"
+
 echo -e "${colour} Disable the default version \e[0m"
 dnf module disable mysql -y  &>>$log_file
 status_check
 
-colour = "\e[33m"
+
 echo -e "${colour} installing the nginx \e[0m"
 dnf install mysql-community-server -y &>>$log_file
 status_check
