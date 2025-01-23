@@ -14,16 +14,16 @@ dnf module disable mysql -y  &>>$log_file
 status_check
 
 
-echo -e "${colour} installing the nginx \e[0m"
-dnf install mysql-community-server -y &>>$log_file
+echo -e "${colour} installing the mysql \e[0m"
+dnf install mysql-community-server -y
 status_check
 
 echo -e "${colour} copying the data \e[0m"
-cp  mysql.repo  /etc/yum.repos.d/mysql.repo &>>log_file
+cp  mysql.repo  /etc/yum.repos.d/mysql.repo &>>$log_file
 status_check
 
 echo -e "${colour} setting the password for DB \e[0m"
-mysql_secure_installation --set-root-pass ExpenseApp@1 &>>log_file
+mysql_secure_installation --set-root-pass ${MYSQL_ROOT_PASSWORD} &>>$log_file
 status_check
 
 
