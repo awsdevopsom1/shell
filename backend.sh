@@ -13,7 +13,7 @@ status_check
 
 echo -e "${colour} enable nodejs \e[0m"
 dnf module enable nodejs:18 -y &>>$log_file
-stat$u$s_check
+status_check
 
 echo -e "${colour} enable nodejs \e[0m"
 dnf install nodejs -y &>>$log_file
@@ -47,25 +47,25 @@ curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip 
 status_check 
 
 echo -e "${colour} Extract the downloaded application content \e[0m"
-cd /app  &>>$logfile
-unzip /tmp/backend.zip &>>$logfile
+cd /app  &>>$log_file
+unzip /tmp/backend.zip &>>$log_file
 status_check
 echo -e "${colour} installing the node js\e[0m"
-npm install  &>>$logfile
+npm install  &>>$log_file
 status_check
 
 echo -e "${color} Install MySQL Client to Load Schema \e[0m"
-dnf install mysql -y &>>$logfile
+dnf install mysql -y &>>$log_file
 status_check
 
 echo -e "${color} Load Schema \e[0m"
-mysql -h 172.31.86.200 -uroot -pExpenseApp@1 < /app/schema/backend.sql  &>>$logfile
+mysql -h 172.31.86.200 -uroot -pExpenseApp@1 < /app/schema/backend.sql  &>>$log_file
 status_check
 
 echo -e "${colour} starting the backendservice \e[0m"
-systemctl daemon-reload &>>$logfile
-systemctl enable backend &>>$logfile
-systemctl start backend &>>$logfile
+systemctl daemon-reload &>>$log_file
+systemctl enable backend &>>$log_file
+systemctl start backend &>>$log_file
 status_check
 
 
