@@ -23,7 +23,7 @@ cp  mysql.repo  /etc/yum.repos.d/mysql.repo &>>$log_file
 status_check
 
 echo -e "${colour} setting the password for DB \e[0m"
-mysql_secure_installation --set-root-pass ${MYSQL_ROOT_PASSWORD} &>>$log_file
+mysql_secure_installation --set-root-pass ${MYSQL_ROOT_PASSWORD} 
 status_check
 
 
